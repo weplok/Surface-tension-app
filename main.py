@@ -11,6 +11,11 @@ class SurfaceTension(QMainWindow):
         super().__init__()
         uic.loadUi("ui/mainUi.ui", self)
         self.setWindowTitle("Выбор модели")
+
+        self.stbar_msecs = 3000
+        self.g_var = 10
+        self.pi_var = 3.1415
+
         self.initUI()
 
     def initUI(self):
