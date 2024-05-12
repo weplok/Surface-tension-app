@@ -4,6 +4,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from classes.pipetka import PipetkaWindow
+from classes.spichka import SpichkaWindow
 
 
 class SurfaceTension(QMainWindow):
@@ -20,10 +21,15 @@ class SurfaceTension(QMainWindow):
 
     def initUI(self):
         self.pipetka.clicked.connect(self.pipetkaOpenWindow)
+        self.spichka.clicked.connect(self.spichkaOpenWindow)
 
     def pipetkaOpenWindow(self):
         pipetka = PipetkaWindow(self)
         pipetka.show()
+
+    def spichkaOpenWindow(self):
+        spichka = SpichkaWindow(self)
+        spichka.show()
 
 
 def except_hook(cls, exception, traceback):
