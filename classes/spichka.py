@@ -56,9 +56,7 @@ class SpichkaWindow(QMainWindow):
         # expr - объект формулы
         expr = parse_expr(self.check_value[calc_value][1])
         # Далее создаются объекты символов в формуле
-        sigma, m, Fpn, Ft, l, Pi, g = sympy.symbols(
-            "sigma m Fpn Ft l Pi g"
-        )
+        sigma, m, Fpn, Ft, l, Pi, g = sympy.symbols("sigma m Fpn Ft l Pi g")
         # val - результат вычислений по формуле
         val = float(
             expr.evalf(

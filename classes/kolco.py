@@ -70,7 +70,22 @@ class KolcoWindow(QMainWindow):
         # expr - объект формулы
         expr = parse_expr(self.check_value[calc_value][1])
         # Далее создаются объекты символов в формуле
-        sigma, m, l, Fpn, Ft, F, lvnutr, Rvnutr, dvnutr, lvnesh, Rvnesh, dvnesh, Pi, g = sympy.symbols(
+        (
+            sigma,
+            m,
+            l,
+            Fpn,
+            Ft,
+            F,
+            lvnutr,
+            Rvnutr,
+            dvnutr,
+            lvnesh,
+            Rvnesh,
+            dvnesh,
+            Pi,
+            g,
+        ) = sympy.symbols(
             "sigma m l Fpn Ft F lvnutr Rvnutr dvnutr lvnesh Rvnesh dvnesh Pi g"
         )
         # val - результат вычислений по формуле
