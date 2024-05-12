@@ -3,6 +3,7 @@ from PyQt5 import uic
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
+from classes.kapillar import KapillarWindow
 from classes.kolco import KolcoWindow
 from classes.pipetka import PipetkaWindow
 from classes.spichka import SpichkaWindow
@@ -24,6 +25,7 @@ class SurfaceTension(QMainWindow):
         self.pipetka.clicked.connect(self.pipetkaOpenWindow)
         self.spichka.clicked.connect(self.spichkaOpenWindow)
         self.kolco.clicked.connect(self.kolcoOpenWindow)
+        self.kapillar.clicked.connect(self.kapillarOpenWindow)
 
     def pipetkaOpenWindow(self):
         pipetka = PipetkaWindow(self)
@@ -36,6 +38,10 @@ class SurfaceTension(QMainWindow):
     def kolcoOpenWindow(self):
         kolco = KolcoWindow(self)
         kolco.show()
+
+    def kapillarOpenWindow(self):
+        kapillar = KapillarWindow(self)
+        kapillar.show()
 
 
 def except_hook(cls, exception, traceback):
