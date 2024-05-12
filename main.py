@@ -12,9 +12,9 @@ class SurfaceTension(QMainWindow):
         uic.loadUi("ui/mainUi.ui", self)
         self.setWindowTitle("Выбор модели")
 
-        self.stbar_msecs = 3000
-        self.g_var = 10
-        self.pi_var = 3.1415
+        self.stbar_msecs = 3000  # Задержка сообщений в статусбаре
+        self.g_var = 10  # Переменная ускорения свободного падения
+        self.pi_var = 3.1415  # Число Пи
 
         self.initUI()
 
@@ -30,7 +30,7 @@ def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     form = SurfaceTension()
     form.show()
