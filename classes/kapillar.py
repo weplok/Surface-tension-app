@@ -5,30 +5,38 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from sympy.parsing.sympy_parser import parse_expr
 
-# ПЕРЕДЕЛАТЬ!
+
 class KapillarWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         uic.loadUi("ui/kapillar.ui", self)
-        self.setWindowTitle("Модель пипетки")
+        self.setWindowTitle("Модель капилляра")
         self.parent = parent  # атрибут с родительским классом
 
         self.objects = {
             "σ": self.sigma_var,
+            "ρ": self.ro_var,
+            "h": self.h_var,
             "m": self.m_var,
             "Fпн": self.Fpn_var,
             "Fтяж": self.Ft_var,
+            "A": self.A_var,
+            "Eп": self.Ep_var,
             "l": self.l_var,
             "R": self.R_var,
             "d": self.d_var,
         }  # Объекты текстовых полей по символам
         self.check_value = {
             "σ": [["Fпн", "l"], "Fpn/l"],
-            "m": [["Fтяж"], "Ft/g"],
+            "ρ": [["σ", "R", "h"], "(2*sigma)/(R*g*h)"],
+            "h": [["σ", "ρ", "R"], "(2*sigma)/(R*ro*g)"],
+            "m": [["R", "σ"], "(2*Pi*R*sigma)/g"],
             "Fпн": [["σ", "l"], "sigma*l"],
             "Fтяж": [["m"], "m*g"],
-            "l": [["R"], "2*Pi*R"],
-            "R": [["d"], "d/2"],
+            "A": [["σ", "ρ"], "(4*Pi*sigma**2)/(ro*g)"],
+            "Eп": [["σ", "ρ"], "(2*Pi*sigma**2)/(ro*g)"],
+            "l": [["d"], "Pi*d"],
+            "R": [["σ", "ρ", "h"], "(2*sigma)/(ro*g*h)"],
             "d": [["R"], "R*2"],
         }  # Необходимые для вычисления значения и формула
 
@@ -60,17 +68,21 @@ class KapillarWindow(QMainWindow):
         # expr - объект формулы
         expr = parse_expr(self.check_value[calc_value][1])
         # Далее создаются объекты символов в формуле
-        sigma, m, Fpn, Ft, l, R, d, Pi, g = sympy.symbols(
-            "sigma m Fpn Ft l R d Pi g"
+        sigma, ro, h, m, Fpn, Ft, A, Ep, l, R, d, Pi, g = sympy.symbols(
+            "sigma ro h m Fpn Ft A Ep l R d Pi g"
         )
         # val - результат вычислений по формуле
         val = float(
             expr.evalf(
                 subs={
                     sigma: self.sigma_var.toPlainText(),
+                    ro: self.ro_var.toPlainText(),
+                    h: self.h_var.toPlainText(),
                     m: self.m_var.toPlainText(),
                     Fpn: self.Fpn_var.toPlainText(),
                     Ft: self.Ft_var.toPlainText(),
+                    A: self.A_var.toPlainText(),
+                    Ep: self.Ep_var.toPlainText(),
                     l: self.l_var.toPlainText(),
                     R: self.R_var.toPlainText(),
                     d: self.d_var.toPlainText(),
