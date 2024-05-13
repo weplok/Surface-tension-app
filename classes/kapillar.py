@@ -5,6 +5,8 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from sympy.parsing.sympy_parser import parse_expr
 
+from __abstract import SurfaceTension
+
 
 class KapillarWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -101,7 +103,8 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    form = KapillarWindow()
+    parent = SurfaceTension()
+    form = KapillarWindow(parent)
     form.show()
     sys.excepthook = except_hook
     sys.exit(app.exec())
