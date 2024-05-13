@@ -36,8 +36,8 @@ class KapillarWindow(QMainWindow):
             "A": [["σ", "ρ"], "(4*Pi*sigma**2)/(ro*g)"],
             "Eп": [["σ", "ρ"], "(2*Pi*sigma**2)/(ro*g)"],
             "l": [["d"], "Pi*d"],
-            "R": [["σ", "ρ", "h"], "(2*sigma)/(ro*g*h)"],
-            "d": [["R"], "R*2"],
+            "R": [["d"], "d/2"],
+            "d": [["σ", "ρ", "h"], "(4*sigma)/(ro*g*h)"],
         }  # Необходимые для вычисления значения и формула
 
         self.initUi()
@@ -101,7 +101,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    form = PipetkaWindow()
+    form = KapillarWindow()
     form.show()
     sys.excepthook = except_hook
     sys.exit(app.exec())
