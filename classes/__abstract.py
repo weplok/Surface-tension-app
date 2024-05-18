@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow
 
 
+# Абстрактная модель, необходимая для прямого запуска окон из терминала
 class SurfaceTension(QMainWindow):
     def __init__(self):
         super().__init__()
