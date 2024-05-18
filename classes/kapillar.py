@@ -93,6 +93,9 @@ class KapillarWindow(QMainWindow):
         )
         # Вычисленный результат округляется и выводится пользователю
         self.answer.setText(str(round(val, self.round.value())))
+        self.statusBar().showMessage(
+            f"Ответ успешно вычислен!", self.parent.stbar_msecs
+        )
 
 
 def except_hook(cls, exception, traceback):
