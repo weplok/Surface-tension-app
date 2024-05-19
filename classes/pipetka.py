@@ -60,7 +60,9 @@ class PipetkaWindow(QMainWindow):
         # expr - объект формулы
         expr = parse_expr(self.check_value[calc_value][1])
         # Далее создаются объекты символов в формуле
-        sigma, m, Fpn, Ft, l, R, d, Pi, g = sympy.symbols("sigma m Fpn Ft l R d Pi g")
+        sigma, m, Fpn, Ft, l, R, d, Pi, g = sympy.symbols(
+            "sigma m Fpn Ft l R d Pi g"
+        )
         # val - результат вычислений по формуле
         val = float(
             expr.evalf(
@@ -79,7 +81,9 @@ class PipetkaWindow(QMainWindow):
         )
         # Вычисленный результат округляется и выводится пользователю
         self.answer.setText(str(round(val, self.round.value())))
-        self.statusBar().showMessage("Ответ успешно вычислен!", self.parent.stbar_msecs)
+        self.statusBar().showMessage(
+            "Ответ успешно вычислен!", self.parent.stbar_msecs
+        )
 
 
 def except_hook(cls, exception, traceback):
