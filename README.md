@@ -50,7 +50,7 @@ python main.py
 ## Команды линтеров
 
 ```bash
-black --exclude venv .
+black --exclude venv --line-length 79 .
 ```
 
 ```bash
