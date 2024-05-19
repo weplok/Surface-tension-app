@@ -26,6 +26,7 @@ class SurfaceTension(QMainWindow):
         self.spichka.clicked.connect(self.spichkaOpenWindow)
         self.kolco.clicked.connect(self.kolcoOpenWindow)
         self.kapillar.clicked.connect(self.kapillarOpenWindow)
+        self.settings.clicked.connect(self.settingsOpenWindow)
 
     def pipetkaOpenWindow(self):
         pipetka = PipetkaWindow(self)
@@ -42,6 +43,42 @@ class SurfaceTension(QMainWindow):
     def kapillarOpenWindow(self):
         kapillar = KapillarWindow(self)
         kapillar.show()
+
+    def settingsOpenWindow(self):
+        settings = SettingsWindow(self)
+        settings.show()
+
+
+class SettingsWindow(QMainWindow):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        uic.loadUi("ui/settings.ui", self)
+        self.setWindowTitle("Настройки")
+        self.parent = parent  # атрибут с родительским классом
+
+        self.initUi()
+
+    def initUi(self):
+        self.g_var.setText(str(self.parent.g_var))
+        self.pi_var.setText(str(self.parent.pi_var))
+
+        self.save_btn.clicked.connect(self.save)
+
+    def save(self):
+        try:
+            self.parent.g_var = float(self.g_var.toPlainText())
+            self.parent.pi_var = float(self.pi_var.toPlainText())
+        except ValueError:
+            self.statusBar().showMessage(
+                'Используйте "." вместо ","!',
+                self.parent.stbar_msecs,
+            )
+            return
+        self.parent.statusBar().showMessage(
+            f"g = {self.parent.g_var}; pi = {self.parent.pi_var}",
+            self.parent.stbar_msecs,
+        )
+        self.close()
 
 
 def except_hook(cls, exception, traceback):
