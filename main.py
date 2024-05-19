@@ -15,7 +15,7 @@ class SurfaceTension(QMainWindow):
         uic.loadUi("ui/mainUi.ui", self)
         self.setWindowTitle("Выбор модели")
 
-        self.stbar_msecs = 3000  # Задержка сообщений в статусбаре
+        self.stbar_msecs = 4000  # Задержка сообщений в статусбаре
         self.g_var = 9.81  # Переменная ускорения свободного падения
         self.pi_var = 3.1415  # Число Пи
 
