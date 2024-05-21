@@ -1,6 +1,8 @@
 # Surface-tension-app
 
-Qt-приложение для вычислений в области поверхностного натяжения жидкостей
+Qt-приложение для вычислений в области поверхностного натяжения жидкостей\
+Практическая часть к проекту по физике на тему "Поверхностное натяжение жидкостей"
+ученика Авиационно-технологического колледжа ДГТУ Шюшас М.Р. (группа ИСП9-К12)
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Qt](https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&logo=Qt&logoColor=white)
